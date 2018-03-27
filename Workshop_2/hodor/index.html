@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>My First Eth App</title>
+        <script src="https://cdn.ethers.io/scripts/ethers-v2.min.js"
+        charset="utf-8"
+        type="text/javascript">
+</script>
+    </head>
+    <body>
+        <h1>Hodor contract</h1>
+        <h2>Deploy Contract</h2>
+        <div id = "contractDeploy">
+            Greeting: <input id = "greeting" type="text"> <br>
+            <button onclick="Deploy()">Submit</button>
+        </div>
+        <p id="deployTransaction">
+            Transaction Hash: <span id="contractDepHash"></span><br>
+            Contract Address: <span id="contractAddress"></span>
+        </p>
+        <h2>Current Greeting</h2>
+        <p id="greet"></p>
+        <h2>Set Greeting</h2>
+        <div>
+            New Greeting: <input id = "newGreeting" type="text"> <br>
+            <button onclick="setGreeting()">Submit</button>
+        </div>
+        <script type="text/javascript" src="js/contract.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
