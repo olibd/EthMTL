@@ -13,3 +13,7 @@
 4. Import the first Ganache account into Metamask
 5. In the terminal, navigate to the folder containing the code then execute http-server
 6. Open your browser and navigate to localhost:8080
+
+# Slides
+
+[Here](https://docs.google.com/presentation/d/1aS-zACJ-EZTH9GZkCKlx54T899Tsvq7nH6fd9qW7dWY/edit?usp=sharing)
