@@ -5,8 +5,7 @@ var signer;
 //and load the app
 window.addEventListener("load", function(){
     if(typeof web3 !== 'undefined'){
-        provider = new ethers.providers.Web3Provider(web3.currentProvider);
-        signer = provider.getSigner();
+        //
         initApp();
     }else{
         console.log("no web3.");
@@ -17,68 +16,36 @@ var Contract;
 var amount;
 
 function Deploy(){
-    var buyer = document.getElementById("buyer").value;
-    var seller = document.getElementById("seller").value;
-    amount = ethers.utils.parseEther(document.getElementById("amount").value);
-
-    var deployTransaction = ethers.Contract.getDeployTransaction(bytecode, abi, buyer, seller, amount);
-
-    var promise = signer.sendTransaction(deployTransaction);
-
-    promise.then(function(transaction){
-        initContract(ethers.utils.getContractAddress(transaction));
-        UpdateAppUrl(Contract.address);
-    });
+    //
 }
 
 //Calls the confirmPayment() function of the contract
 function Pay(){
-    var overrideOptions = {
-        value: amount
-    };
-
-    Contract.confirmPayment(overrideOptions).then(function(transaction){
-        AppState1();
-    });
+    //
 }
 
 //Calls the confirmDelivery() function of the contract
 function Deliver(){
-    Contract.confirmDelivery().then(function(transaction){
-        AppState2();
-    });
+    //
 }
 
 //Get, from the contract, its current state
 //and update the app state accordingly
 //this function is called on page load
 function GetAppStateOnPageLoad(){
-    Contract.currentState().then(function(result){
-        if(result == 0){
-            GetAmountToPay();
-            AppState0();
-        }else if(result == 1){
-            AppState1();
-        }else if(result == 2){
-            AppState2();
-        }
-    });
+    //
 }
 
 //Get from the contract the amount the seller has to pay
 function GetAmountToPay(){
-    Contract.amount().then(function(result){
-        amount = result;
-        document.getElementById("paymentAmount").innerText = ethers.utils.formatEther(amount);
-    });
+    //
 }
 
 //Given an address, initialize a contract object the references
 //the contract on the blockchain
 function initContract(address){
-    Contract = new ethers.Contract(address, abi, signer);
+    //
     document.getElementById("contractDeploy").style.display = "none";
-    GetAppStateOnPageLoad();
 }
 
 ///////////////////////////////
@@ -91,6 +58,7 @@ function initApp(){
     if(hash.length == 43){
         //initialize a contract object that references the ethereum smart contract
         initContract(hash.substring(1));
+        GetAppStateOnPageLoad();
     }
 }
 
