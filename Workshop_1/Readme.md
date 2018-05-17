@@ -1,2 +1,2 @@
-You can run and edit this code in [Remix](https://remix.ethereum.org/)
-You can find the slides [here]()
+1. You can run and edit this code in [Remix](https://remix.ethereum.org/)
+2. You can find the slides [here](https://docs.google.com/presentation/d/1ZStZavM44TM_uXoZyRS-hl5z0b1TfzfcgXomriNW0IA/edit?usp=sharing)
