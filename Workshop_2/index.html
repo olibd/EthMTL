@@ -1,0 +1,26 @@
+<html>
+    <head>
+<!-- This exposes the library as a global variable: ethers -->
+<script src="https://cdn.ethers.io/scripts/ethers-v2.min.js"
+        charset="utf-8"
+        type="text/javascript">
+</script>   
+    </head>
+    <body>
+        <h1>Hodor Contract</h1>
+        <h2>Deploy Contract</h2>
+        <div id="contractDeploy">
+            Greeting: <input id="greeting" type="text"> <br>
+            <button onclick="Deploy()">Submit</button>
+        </div>
+        <h2>Current Greeting</h2>
+        <p id="greet"></p>
+        <h2>Set a new greeting</h2>
+        <div id="contractDeploy">
+                New Greeting: <input id="newGreeting" type="text"> <br>
+                <button onclick="SetGreeting()">Submit</button>
+            </div>
+        <script type="text/javascript" src="js/contract.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>
