@@ -33,50 +33,30 @@ function Deploy(){
 
 //Calls the confirmPayment() function of the contract
 function Pay(){
-    var overrideOptions = {
-        value: amount
-    };
-
-    Contract.confirmPayment(overrideOptions).then(function(transaction){
-        AppState1();
-    });
+    //TODO
 }
 
 //Calls the confirmDelivery() function of the contract
 function Deliver(){
-    Contract.confirmDelivery().then(function(transaction){
-        AppState2();
-    });
+    //TODO
 }
 
 //Get, from the contract, its current state
 //and update the app state accordingly
 //this function is called on page load
 function GetAppStateOnPageLoad(){
-    Contract.currentState().then(function(result){
-        if(result == 0){
-            GetAmountToPay();
-            AppState0();
-        }else if(result == 1){
-            AppState1();
-        }else if(result == 2){
-            AppState2();
-        }
-    });
+    //TODO
 }
 
 //Get from the contract the amount the seller has to pay
 function GetAmountToPay(){
-    Contract.amount().then(function(result){
-        amount = result;
-        document.getElementById("paymentAmount").innerText = ethers.utils.formatEther(amount);
-    });
+    //TODO
 }
 
 //Given an address, initialize a contract object the references
 //the contract on the blockchain
 function initContract(address){
-    Contract = new ethers.Contract(address, abi, signer);
+    //TODO
     document.getElementById("contractDeploy").style.display = "none";
     GetAppStateOnPageLoad();
 }
@@ -100,14 +80,14 @@ function UpdateAppUrl(contractAddress) {
 }
 
 //Puts the app ui in state 0. (asks the buyer to confirm the payment)
-function AppState0(){
+function AppStateAwaitingPayment(){
     document.getElementById("ConfirmPayment").style.display = "block";
     console.log("State 0");
 }
 
 //Puts the app ui in state 1. (Hides the confirm payment section
 //and asks the buyer to confirm the reception of the package)
-function AppState1(){
+function AppStateAwaitingDelivery(){
     document.getElementById("ConfirmPayment").style.display = "none";
     document.getElementById("ConfirmDelivery").style.display = "block";
     document.getElementById("PaymentStatus").innerText = "Paid.";
@@ -115,7 +95,7 @@ function AppState1(){
 }
 
 //Puts the app ui in state 1. (Only shows the payment and delivery status)
-function AppState2(){
+function AppStateTransactionComplete(){
     document.getElementById("ConfirmDelivery").style.display = "none";    
     document.getElementById("PaymentStatus").innerText = "Paid.";
     document.getElementById("DeliveryStatus").innerText = "Delivered.";
