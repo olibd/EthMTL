@@ -106,17 +106,7 @@ function initContract(address){
     document.getElementById("contractDeploy").style.display = "none";
 
     GetBuyerAndSeller();
-
-    Contract.onpaid = function(){
-        AppState1();
-    };
-    Contract.onshipped = function(){
-        AppState2();
-    };
-    Contract.ondelivered = function(){
-        AppState3();
-    };
-
+    //TODO: WATCH EVENTS
     GetAppStateOnPageLoad();
 }
 
