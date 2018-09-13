@@ -1,9 +1,6 @@
 pragma solidity ^0.4.24;
 
-import "SafeMath.sol";
-
 contract Escrow {
-    using SafeMath for uint; //recall: uint is 256 bits
     enum State {AWAITING_PAYMENT, AWAITING_SHIPPING, AWAITING_DELIVERY, COMPLETE}
 
     State public currentState;  // will automatically take first state, don't need to define
@@ -36,29 +33,19 @@ contract Escrow {
         require(currentState == expectedState, "Contract is not in the right state for this operation.");
         _;
     }
-    
-    struct Bill{
-        uint itemPrice;
-        uint shippingCost;
-        uint total;
-    }
 
     address public buyer;  // "public" creates automatic getter function
     address public seller;
-    uint public weight;
-    Bill public bill;
+    uint public amount;
 
-    constructor(address _buyer, address _seller, uint _itemPrice, uint _weight) public {
+    constructor(address _buyer, address _seller, uint _amount) public {
         buyer = _buyer;
         seller = _seller;
-        weight = _weight;
-        bill.itemPrice = _itemPrice;
-        bill.shippingCost = SafeMath.mul(_weight, 9000000000000000);
-        bill.total = bill.itemPrice.add(bill.shippingCost);
+        amount = _amout
     }
 
     function confirmPayment() public buyerOnly inState(State.AWAITING_PAYMENT) payable {    // payable allows function to accept money
-        require(bill.total == msg.value, "Invalid amount sent");
+        require(amount == msg.value, "Invalid amount sent");
         currentState = State.AWAITING_SHIPPING;
         emit Paid(buyer, msg.value);
     }
