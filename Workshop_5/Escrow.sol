@@ -41,7 +41,7 @@ contract Escrow {
     constructor(address _buyer, address _seller, uint _amount) public {
         buyer = _buyer;
         seller = _seller;
-        amount = _amout
+        amount = _amount;
     }
 
     function confirmPayment() public buyerOnly inState(State.AWAITING_PAYMENT) payable {    // payable allows function to accept money
